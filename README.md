@@ -8,6 +8,6 @@ The circuit was simulated using the Wokwi platform.
 - Buzzer
 ## Libs
 - ArduinoSTL by Mike Matera
-## Circut 
-![alt text](https://github.com/grafscorp/SimonSay-ArduinoUno/blob/main/Circut.png?center=true)
+## Сircuit 
+![alt text](https://github.com/grafscorp/SimonSay-ArduinoUno/blob/main/Сircuit.png?center=true)
 
