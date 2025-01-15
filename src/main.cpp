@@ -43,5 +43,11 @@ void setup()
 
 void loop()
 {
+  playerInput();
+  if (!isPlayerInput){
+    delay(500);
+     playBuffer();}
+}
+
 
 }
