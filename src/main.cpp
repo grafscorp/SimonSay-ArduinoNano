@@ -9,7 +9,7 @@ std::vector<int> playerBuffer;
 
 
 bool isPlayerInput = false;
-
+//
 const size_t MAX_SCOPE = 20;
 
 const size_t BTNS[] = {BUTTON_RED_PIN,BUTTON_GREEN_PIN,BUTTON_BLUE_PIN,BUTTON_YELLOW_PIN};
@@ -36,7 +36,7 @@ void setup()
     pinMode(BTNS[i],INPUT_PULLUP);
     pinMode(LEDS[i],OUTPUT);
   }
-
+  randomSeed(analogRead(0));
   resetBuffer();
   playBuffer();
 }
