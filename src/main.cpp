@@ -49,5 +49,128 @@ void loop()
      playBuffer();}
 }
 
+#pragma region GameFunc
+void clearBuffers()
+{
+  buffer.clear();
+  playerBuffer.clear();
+}
+
+//Clear the game buffer and add a random number.
+void resetBuffer()
+{
+  
+  clearBuffers();
+  addNewBtnToBuffer(random(SIZE_BTNS));
+}
+
+void addNewBtnToBuffer(const size_t newValue)
+{
+  buffer.push_back(newValue);
+}
+//go through the game buffer, and give the player a move
+void playBuffer()
+{
+  for (size_t i = 0 ; i < buffer.size();i++)
+  {
+    playSoundAndLed(buffer[i]);
+    delay(250);
+  }
+  isPlayerInput = true;
+}
+
+void playSoundAndLed(const size_t btn, size_t time = 500)
+{
+  digitalWrite(LEDS[btn], HIGH);
+  tone(SPEAKER_PIN, tunes[btn]);
+  delay(time);
+  digitalWrite(LEDS[btn],LOW);
+  noTone(SPEAKER_PIN);
+}
+
+void playerInput()
+{
+  if(!isPlayerInput) return;
+  for (size_t activeBtn = 0; activeBtn < SIZE_BTNS; activeBtn++)
+  {
+    if(digitalRead(BTNS[activeBtn])==LOW)
+    {
+      playSoundAndLed(activeBtn);
+
+      playerBuffer.push_back(activeBtn);
+      
+      checkPlayerInput(activeBtn);
+
+    }
+  }
+}
+
+void checkPlayerInput(int playerBtn)
+{
+  size_t playerStep = playerBuffer.size()-1;
+
+  if (buffer[playerStep] == playerBtn)
+  {
+    
+    checkBuffer();
+    
+  }else{
+    loseGame();
+  }
+
+  if(buffer.size() > MAX_SCOPE) winGame();
+}
+void loseGame()
+{
+  #pragma region PlayLeds
+  for (size_t i = 0; i < 3; i++)
+  {
+    for (size_t j = 0; j < SIZE_BTNS; j++)
+    {
+      digitalWrite(LEDS[j],HIGH);
+    }
+    tone(SPEAKER_PIN,NOTE_A1);
+    delay(250);
+    for (size_t j = 0; j < SIZE_BTNS; j++)
+    {
+      digitalWrite(LEDS[j],LOW);
+    }
+    noTone(SPEAKER_PIN);
+    delay(250);
+  }
+  #pragma endregion PlayLeds
+  resetBuffer();
+  playBuffer();
+
+  
+}
+void winGame()
+{
+  #pragma region PlayLeds
+  const int waveTimes = 3;
+  for (size_t i = 0; i < waveTimes; i++)
+  {
+    for (size_t l = 0;l < SIZE_BTNS; l++)
+    {
+      playSoundAndLed(l,250);
+    }
+  }
+  #pragma endregion PlayLeds
+
+  resetBuffer();
+}
+
+//check whether the player has gone through the entire buffer
+void checkBuffer()
+{
+  
+  if(buffer.size() == playerBuffer.size())
+  {
+    addNewBtnToBuffer(random(SIZE_BTNS));
+    isPlayerInput = false;
+    playerBuffer.clear();
+
+  }
+}
 
 }
