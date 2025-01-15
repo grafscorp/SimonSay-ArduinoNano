@@ -173,4 +173,4 @@ void checkBuffer()
   }
 }
 
-}
+#pragma endregion GameFunc
