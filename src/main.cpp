@@ -31,7 +31,14 @@ void checkBuffer();
 
 void setup()
 {
+  for (size_t i = 0; i < SIZE_BTNS; i++)
+  {
+    pinMode(BTNS[i],INPUT_PULLUP);
+    pinMode(LEDS[i],OUTPUT);
+  }
 
+  resetBuffer();
+  playBuffer();
 }
 
 void loop()
