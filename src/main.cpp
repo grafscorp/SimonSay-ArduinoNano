@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include "pitches.h"
+#include "pins.h"
 
 
 
