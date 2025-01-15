@@ -1,0 +1,14 @@
+
+//LED PINS
+#define LED_RED_PIN 8
+#define LED_GREEN_PIN 7
+#define LED_BLUE_PIN 6
+#define LED_YELLOW_PIN 5
+//BTNS PINS
+#define BUTTON_RED_PIN 12
+#define BUTTON_GREEN_PIN 11
+#define BUTTON_BLUE_PIN 10
+#define BUTTON_YELLOW_PIN 9
+
+//
+#define SPEAKER_PIN 2
