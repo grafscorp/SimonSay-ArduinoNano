@@ -8,7 +8,7 @@ The circuit was simulated using the Wokwi platform.
 - 4 x Resistor 220 Omh
 - Buzzer
 ## Libs
-- ArduinoSTL by Mike Matera
+- ArduinoSTL by Mike Matera 
 ## Сircuit 
 ![alt text](https://github.com/grafscorp/SimonSay-ArduinoUno/blob/main/Сircuit.png?center=true)
 
